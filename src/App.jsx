@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "@google/model-viewer";
 import { productos } from "./data";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navbar/Navbar";
 import "./App.css";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import CartPage from "./components/CartPage";
+import CartPage from "./components/cart_page/CartPage";
 
 function App() {
   const navigate = useNavigate();

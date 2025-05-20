@@ -1,4 +1,4 @@
-import { Carrito } from "../Carrito";
+import { Carrito } from "../../Carrito";
 
 const CartPage = ({ carrito, setCarrito }) => {
   return (
