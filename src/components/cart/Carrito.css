@@ -1,0 +1,53 @@
+.carrito {
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.carrito ul {
+  list-style: none;
+  padding: 0;
+}
+
+.carrito li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+}
+
+.carrito input[type="number"] {
+  width: 70px;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+}
+
+.carrito button {
+  padding: 0.4rem 0.6rem;
+  background-color: #774040;
+  border: none;
+  color: white;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carrito button:hover {
+  background-color: #d93c3c;
+}
+
+.carrito hr {
+  margin: 1.5rem 0;
+}
+
+.cantidad-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
