@@ -6,6 +6,8 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', sans-serif;
+  width: 90%;
+  box-sizing: border-box;
 }
 
 .dark .login-container {
@@ -51,6 +53,7 @@
   color: var(--text-color);
   font-size: 1rem;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .form-group input:focus {
@@ -65,7 +68,8 @@
   margin-top: 1.5rem;
 }
 
-.login-button, .signup-button {
+.login-button,
+.signup-button {
   flex: 1;
   padding: 0.8rem;
   border: none;
@@ -96,13 +100,35 @@
   background-color: rgba(66, 133, 244, 0.1);
 }
 
+/* === Responsividad === */
+
+@media (max-width: 768px) {
+  .login-container {
+    margin: 3rem auto;
+    padding: 2rem;
+  }
+
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 480px) {
   .login-container {
     margin: 2rem auto;
     padding: 1.5rem;
   }
-  
+
+  .login-header h2 {
+    font-size: 1.3rem;
+  }
+
   .login-actions {
     flex-direction: column;
+  }
+
+  .login-button,
+  .signup-button {
+    width: 100%;
   }
 }
