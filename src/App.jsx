@@ -39,6 +39,8 @@ function App() {
     return favoritosGuardados ? JSON.parse(favoritosGuardados) : [];
   });
 
+  const [mensajeCarrito, setMensajeCarrito] = useState("");
+
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
@@ -66,6 +68,11 @@ function App() {
         return [...prev, { ...producto, cantidad: 1 }];
       }
     });
+    setMensajeCarrito(`"${producto.nombre}" agregado al carrito`);
+
+    setTimeout(() => {
+      setMensajeCarrito("");
+    }, 3000);
   };
 
   const toggleFavorito = (producto) => {
@@ -85,7 +92,11 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar carrito={carrito} favoritos={favoritos} />
+      <Navbar
+        carrito={carrito}
+        favoritos={favoritos}
+        mensajeCarrito={mensajeCarrito}
+      />
       <main className="main-content">
         <Routes>
           <Route
@@ -138,6 +149,7 @@ function App() {
               <ProductDetail
                 agregarAlCarrito={agregarAlCarrito}
                 agregarAFavoritos={toggleFavorito}
+                favoritos={favoritos}
               />
             }
           />

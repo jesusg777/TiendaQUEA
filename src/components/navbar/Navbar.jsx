@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-export const Navbar = ({ carrito, favoritos }) => {
+export const Navbar = ({ carrito, favoritos, mensajeCarrito }) => {
   const { isDark, toggleTheme } = useTheme();
   const [currentUser, setCurrentUser] = useState(
     localStorage.getItem("currentUser")
@@ -100,8 +100,23 @@ export const Navbar = ({ carrito, favoritos }) => {
             {carrito.length > 0 && (
               <span className="cart-badge">{carrito.length}</span>
             )}
+
             <span className="tooltip">Carrito</span>
           </div>
+          {mensajeCarrito && (
+            <div className="notification-toast">
+              <div className="toast-content">
+                <svg className="toast-icon" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+                  />
+                </svg>
+                <span>{mensajeCarrito}</span>
+              </div>
+              <div className="progress-bar"></div>
+            </div>
+          )}
         </div>
 
         {/* Favoritos */}
