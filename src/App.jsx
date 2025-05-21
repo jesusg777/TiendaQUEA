@@ -94,7 +94,6 @@ function App() {
               <div className="galeria">
                 {productos.map((item) => (
                   <div
-                    key={item.id}
                     className="producto"
                     onClick={() => navigate(`/producto/${item.id}`)}
                   >
@@ -108,24 +107,26 @@ function App() {
                     />
                     <h2>{item.nombre}</h2>
                     <p>${item.precio}</p>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        agregarAlCarrito(item);
-                      }}
-                    >
-                      Agregar al carrito
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFavorito(item);
-                      }}
-                    >
-                      {esFavorito(item.id)
-                        ? "❤️ Quitar de favoritos"
-                        : "🤍 Agregar a favoritos"}
-                    </button>
+                    <div className="producto-botones">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          agregarAlCarrito(item);
+                        }}
+                      >
+                        🛒 Agregar al carrito
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleFavorito(item);
+                        }}
+                      >
+                        {esFavorito(item.id)
+                          ? "🤍 Quitar favoritos"
+                          : "❤️ Agregar a favoritos"}
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>

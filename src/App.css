@@ -8,7 +8,7 @@
   --navbar-bg: #333333;
   --navbar-text: #ffffff;
   --success-btn: #4caf50;
-  --primary-btn: #008CBA;
+  --primary-btn: #4285f4;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --border-color: #e0e0e0;
   --confirmation-bg: #e6ffe6;
@@ -19,13 +19,13 @@
   --bg-color: #1a1a1a;
   --text-color: #f0f0f0;
   --product-bg: #2d2d2d;
-  --button-bg: #5c9dff;
+  --button-bg: #4285f4;
   --button-text: #ffffff;
   --header-bg: #2a2a2a;
   --navbar-bg: #1a1a1a;
   --navbar-text: #f0f0f0;
   --success-btn: #388e3c;
-  --primary-btn: #007399;
+  --primary-btn: #4285f4;
   --shadow-color: rgba(255, 255, 255, 0.1);
   --border-color: #444444;
   --confirmation-bg: #1e3d1e;
@@ -42,7 +42,7 @@
   min-height: 100vh;
   width: 100%;
 }
-/* Estilos base */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -184,5 +184,59 @@ button:hover, .btn-carrito:hover, .btn-comprar:hover {
     padding: 1rem;
     flex-direction: column;
     gap: 1rem;
+  }
+}
+.producto-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.producto-botones button {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.producto-botones button:first-child {
+  background-color: var(--primary-btn);
+  color: white;
+}
+
+.producto-botones button:last-child {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+}
+
+.producto-botones button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 769px) {
+  .producto-botones {
+    flex-direction: row;
+  }
+  
+  .producto-botones button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .producto-botones {
+    flex-direction: column;
+  }
+  
+  .producto-botones button {
+    width: 100%;
   }
 }
