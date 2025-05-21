@@ -1,4 +1,3 @@
-// src/components/ThemeToggle.jsx
 import { useTheme } from "../../context/ThemeContext";
 import "./ThemeToggle.css";
 

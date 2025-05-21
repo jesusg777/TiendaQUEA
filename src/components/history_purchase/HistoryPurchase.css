@@ -1,0 +1,41 @@
+.historial-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.compras-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.compra-item {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.compra-item h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.compra-item h4 {
+  margin-bottom: 10px;
+}
+
+.compra-item ul {
+  padding-left: 20px;
+}
+
+.compra-item li {
+  margin-bottom: 5px;
+}
+
+.compra-datos {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}

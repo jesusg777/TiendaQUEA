@@ -3,10 +3,21 @@ import "@google/model-viewer";
 import { productos } from "./data";
 import { Navbar } from "./components/navbar/Navbar";
 import "./App.css";
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
 import CartPage from "./components/cart_page/CartPage";
 import FavoritosPage from "./components/fav_products/FavoritosPage";
 import ProductDetail from "./pages/ProductDetail";
+import CheckoutForm from "./components/checkout/CheckoutForm";
+import Invoice from "./components/checkout/Invoice";
+import HistoryPurchase from "./components/history_purchase/HistoryPurchase";
+
+function InvoicePage() {
+  const { state } = useLocation();
+  if (!state || !state.datos || !state.carrito) {
+    return <p>No hay datos para mostrar la factura.</p>;
+  }
+  return <Invoice datos={state.datos} carrito={state.carrito} />;
+}
 
 function App() {
   const navigate = useNavigate();
@@ -14,6 +25,7 @@ function App() {
     const carritoGuardado = localStorage.getItem("carrito");
     return carritoGuardado ? JSON.parse(carritoGuardado) : [];
   });
+
   const [favoritos, setFavoritos] = useState(() => {
     const favoritosGuardados = localStorage.getItem("favoritos");
     return favoritosGuardados ? JSON.parse(favoritosGuardados) : [];
@@ -125,6 +137,11 @@ function App() {
             element={<CartPage carrito={carrito} setCarrito={setCarrito} />}
           />
           <Route
+            path="/formulario"
+            element={<CheckoutForm carrito={carrito} setCarrito={setCarrito} />}
+          />
+
+          <Route
             path="/favoritos"
             element={
               <FavoritosPage
@@ -133,6 +150,8 @@ function App() {
               />
             }
           />
+          <Route path="/factura" element={<InvoicePage />} />
+          <Route path="/historial" element={<HistoryPurchase />} />
         </Routes>
       </main>
     </div>

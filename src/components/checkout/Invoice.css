@@ -1,0 +1,116 @@
+/* Invoice.css */
+.invoice-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.invoice-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+.invoice-container p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.invoice-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.invoice-container th {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #2980b9;
+}
+
+.invoice-container td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.invoice-container tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.invoice-container tr:hover {
+  background-color: #f1f1f1;
+}
+
+.totales {
+  margin-top: 20px;
+  text-align: right;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-top: 2px solid #3498db;
+}
+
+.totales p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.totales strong {
+  display: inline-block;
+  width: 120px;
+  text-align: left;
+}
+
+/* Estilo para resaltar el total */
+.totales p:last-child {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-top: 10px;
+}
+
+/* Estilo para los datos del cliente */
+.invoice-container p strong {
+  display: inline-block;
+  width: 100px;
+  color: #2c3e50;
+}
+
+/* Cabecera de la factura */
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+/* Logo de la empresa (puedes añadir uno) */
+.invoice-logo {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Número de factura (puedes añadirlo al componente) */
+.invoice-number {
+  text-align: right;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #7f8c8d;
+}
+
+/* Pie de página de la factura */
+.invoice-footer {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px dashed #bdc3c7;
+  text-align: center;
+  font-size: 12px;
+  color: #7f8c8d;
+}

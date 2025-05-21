@@ -1,6 +1,12 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Carrito.css";
+import CheckoutForm from "../checkout/CheckoutForm";
 
 export function Carrito({ carrito, setCarrito }) {
+  const [comprando, setComprando] = useState(false);
+  const navigate = useNavigate();
+
   const modificarCantidad = (id, cantidad) => {
     if (cantidad < 1) return;
     setCarrito((prev) =>
@@ -12,12 +18,31 @@ export function Carrito({ carrito, setCarrito }) {
     setCarrito(carrito.filter((item) => item.id !== id));
   };
 
+  const vaciarCarrito = () => {
+    setCarrito([]);
+  };
+
   const subtotal = carrito.reduce(
     (acc, item) => acc + item.precio * item.cantidad,
     0
   );
   const iva = subtotal * 0.19;
   const total = subtotal + iva;
+
+  if (comprando) {
+    return (
+      <CheckoutForm
+        carrito={carrito}
+        total={total}
+        subtotal={subtotal}
+        iva={iva}
+        onPurchaseComplete={() => {
+          vaciarCarrito();
+          setComprando(false);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="carrito">
@@ -59,6 +84,13 @@ export function Carrito({ carrito, setCarrito }) {
           <h3>
             <strong>Total:</strong> ${total.toFixed(2)}
           </h3>
+
+          <button
+            className="btn-comprar"
+            onClick={() => navigate("/formulario")}
+          >
+            Finalizar compra
+          </button>
         </>
       )}
     </div>
