@@ -51,7 +51,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Barra de navegación */
 .navbar {
   background-color: var(--navbar-bg);
   color: var(--navbar-text);
@@ -67,7 +66,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Botones */
 .btn-carrito {
   background: var(--success-btn);
   border: none;
@@ -101,7 +99,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-/* Galería de productos */
 .galeria {
   display: flex;
   flex-wrap: wrap;
@@ -125,7 +122,6 @@ button {
   box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-/* Carrito */
 .carrito {
   background: var(--product-bg);
   border-radius: 8px;
@@ -150,7 +146,6 @@ button {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Confirmación */
 .confirmacion {
   max-width: 600px;
   margin: 2rem auto;
@@ -161,7 +156,6 @@ button {
   transition: all 0.3s ease;
 }
 
-/* Model Viewer */
 model-viewer {
   background-color: var(--product-bg);
   border-radius: 8px;
@@ -170,13 +164,11 @@ model-viewer {
   transition: background-color 0.3s ease;
 }
 
-/* Transiciones para elementos interactivos */
 button:hover, .btn-carrito:hover, .btn-comprar:hover {
   opacity: 0.9;
   transform: scale(1.02);
 }
 
-/* Media queries para responsividad */
 @media (max-width: 768px) {
   .galeria {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

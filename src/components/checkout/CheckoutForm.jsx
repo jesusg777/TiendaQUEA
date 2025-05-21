@@ -32,8 +32,8 @@ const CheckoutForm = ({ carrito, setCarrito }) => {
         datosComprador: formData,
         productos: [...carrito],
         fecha,
-        subtotal, // Añadido
-        iva, // Añadido
+        subtotal,
+        iva,
         total,
         numeroFactura,
       };
@@ -52,8 +52,8 @@ const CheckoutForm = ({ carrito, setCarrito }) => {
           datos: formData,
           carrito,
           numeroFactura,
-          subtotal, // Añadido
-          iva, // Añadido
+          subtotal,
+          iva,
         },
       });
     } catch (error) {
