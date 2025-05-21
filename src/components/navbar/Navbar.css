@@ -293,13 +293,11 @@ body.click-outside-listener.active::after {
   visibility: visible;
 }
 
-/* Estilos específicos para tema oscuro */
 .dark .icon-button-container .tooltip {
   background-color: #f0f0f0;
   color: #333;
 }
 
-/* Asegúrate que los iconos se muestren correctamente */
 .icon-button {
   display: flex;
   align-items: center;
@@ -311,4 +309,59 @@ body.click-outside-listener.active::after {
 .icon-svg {
   width: 24px;
   height: 24px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+    position: fixed;
+    top: 0;
+  }
+  
+  .navbar-brand h1 {
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+  
+  .navbar-actions {
+    gap: 0.5rem;
+  }
+  
+  .icon-button-container {
+    margin: 0 3px;
+  }
+  
+  .icon-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .icon-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-button-container .tooltip {
+    display: none;
+  }
+
+  .dropdown-menu {
+    min-width: 140px;
+    right: 10px;
+  }
+  
+  .user-button, .login-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .cart-badge, .favorites-badge {
+    font-size: 0.6rem;
+    padding: 1px 5px;
+    top: -2px;
+    right: -2px;
+  }
 }
