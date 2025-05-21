@@ -264,3 +264,51 @@ body.click-outside-listener.active::after {
   padding: 2px 6px;
   line-height: 1;
 }
+
+.icon-button-container {
+  position: relative;
+  display: inline-flex;
+  margin: 0 5px;
+}
+
+.icon-button-container .tooltip {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 10;
+}
+
+.icon-button-container:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilos específicos para tema oscuro */
+.dark .icon-button-container .tooltip {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Asegúrate que los iconos se muestren correctamente */
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+}
