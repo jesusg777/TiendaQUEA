@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useTheme } from "../../context/ThemeContext";
 import "./Invoice.css";
 
-const Invoice = ({ datos, carrito }) => {
+const Invoice = ({ datos, carrito, numeroFactura }) => {
+  const { isDark } = useTheme();
   const subtotal = carrito.reduce(
     (acc, item) => acc + item.precio * item.cantidad,
     0
@@ -9,17 +10,14 @@ const Invoice = ({ datos, carrito }) => {
   const iva = subtotal * 0.19;
   const total = subtotal + iva;
   const fecha = new Date().toLocaleString();
-  const numeroFactura = `FAC-${Math.floor(Math.random() * 10000) + 1000}`;
 
   return (
-    <div className="invoice-container">
+    <div className={`invoice-container ${isDark ? "dark" : "light"}`}>
       <div className="invoice-header">
         <div>
           <h2>Factura de Compra</h2>
           <p className="invoice-number">N° FACTURA: {numeroFactura}</p>
         </div>
-        {/* Si tienes un logo, descomenta esta línea */}
-        {/* <img src="/logo-empresa.png" alt="Logo" className="invoice-logo" /> */}
       </div>
 
       <div className="customer-info">

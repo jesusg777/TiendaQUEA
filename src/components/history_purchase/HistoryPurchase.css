@@ -1,7 +1,31 @@
+/* HistoryPurchase.css */
 .historial-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme */
+.historial-container.light {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.historial-container.light .compra-item {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+}
+
+/* Dark theme */
+.historial-container.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.historial-container.dark .compra-item {
+  background-color: #2d2d2d;
+  border: 1px solid #444444;
 }
 
 .compras-list {
@@ -11,19 +35,20 @@
 }
 
 .compra-item {
-  background-color: #f9f9f9;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s;
 }
 
 .compra-item h3 {
   margin-top: 0;
-  color: #2c3e50;
+  color: inherit;
 }
 
 .compra-item h4 {
   margin-bottom: 10px;
+  color: inherit;
 }
 
 .compra-item ul {
@@ -37,5 +62,28 @@
 .compra-datos {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid;
+}
+
+.ver-factura-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ver-factura-btn:hover {
+  background-color: #2980b9;
+}
+
+.historial-container.dark .compra-datos {
+  border-top-color: #444444;
+}
+
+.historial-container.light .compra-datos {
+  border-top-color: #e0e0e0;
 }

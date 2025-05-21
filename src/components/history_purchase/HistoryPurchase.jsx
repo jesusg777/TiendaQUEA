@@ -1,33 +1,36 @@
 import { useState, useEffect } from "react";
+import { useTheme } from "../../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 import "./HistoryPurchase.css";
 
 const HistoryPurchase = () => {
+  const { isDark } = useTheme();
   const [compras, setCompras] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem("currentUser");
     if (user) {
       const historialKey = `compras_por_usuario_${user}`;
       const historial = JSON.parse(localStorage.getItem(historialKey)) || [];
-      // Validamos y limpiamos los datos
-      const comprasValidas = historial.filter(
-        (compra) =>
-          compra &&
-          compra.fecha &&
-          compra.productos &&
-          Array.isArray(compra.productos) &&
-          compra.datosComprador
-      );
-      setCompras(comprasValidas);
+      setCompras(historial);
     }
   }, []);
 
-  const formatPrice = (price) => {
-    return price ? `$${Number(price).toFixed(2)}` : "$0.00";
+  const verFactura = (compra) => {
+    navigate("/factura", {
+      state: {
+        datos: compra.datosComprador,
+        carrito: compra.productos,
+        numeroFactura: compra.numeroFactura,
+        subtotal: compra.subtotal,
+        iva: compra.iva,
+      },
+    });
   };
 
   return (
-    <div className="historial-container">
+    <div className={`historial-container ${isDark ? "dark" : "light"}`}>
       <h2>Tu Historial de Compras</h2>
       {compras.length === 0 ? (
         <p>No tienes compras registradas</p>
@@ -35,35 +38,27 @@ const HistoryPurchase = () => {
         <div className="compras-list">
           {compras.map((compra, index) => (
             <div key={index} className="compra-item">
-              <h3>Compra del {compra.fecha || "Fecha no disponible"}</h3>
+              <h3>Compra del {compra.fecha}</h3>
               <p>
-                <strong>Total:</strong> {formatPrice(compra.total)}
+                <strong>N° Factura:</strong> {compra.numeroFactura}
+              </p>
+              <p>
+                <strong>Subtotal:</strong> $
+                {compra.subtotal?.toFixed(2) || "0.00"}
+              </p>
+              <p>
+                <strong>IVA (19%):</strong> ${compra.iva?.toFixed(2) || "0.00"}
+              </p>
+              <p>
+                <strong>Total:</strong> ${compra.total?.toFixed(2) || "0.00"}
               </p>
 
-              <h4>Productos:</h4>
-              <ul>
-                {compra.productos.map((producto, i) => (
-                  <li key={i}>
-                    {producto.nombre || "Producto"} - {producto.cantidad || 0} x{" "}
-                    {formatPrice(producto.precio)}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="compra-datos">
-                <p>
-                  <strong>Enviado a:</strong>{" "}
-                  {compra.datosComprador?.nombre || "Nombre no disponible"}
-                </p>
-                <p>
-                  <strong>Direccion: </strong>
-                  {compra.datosComprador?.direccion ||
-                    "Dirección no disponible"}
-                  <br />
-                  <strong>Ciudad: </strong>
-                  {compra.datosComprador?.ciudad || "Ciudad no disponible"}
-                </p>
-              </div>
+              <button
+                onClick={() => verFactura(compra)}
+                className="ver-factura-btn"
+              >
+                Ver Factura
+              </button>
             </div>
           ))}
         </div>

@@ -16,7 +16,15 @@ function InvoicePage() {
   if (!state || !state.datos || !state.carrito) {
     return <p>No hay datos para mostrar la factura.</p>;
   }
-  return <Invoice datos={state.datos} carrito={state.carrito} />;
+  return (
+    <Invoice
+      datos={state.datos}
+      carrito={state.carrito}
+      numeroFactura={
+        state.numeroFactura || `FAC-${Math.floor(Math.random() * 10000) + 1000}`
+      }
+    />
+  );
 }
 
 function App() {

@@ -2,115 +2,163 @@
 .invoice-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   font-family: 'Arial', sans-serif;
-  color: #333;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme */
+.invoice-container.light {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.invoice-container.light .customer-info,
+.invoice-container.light .payment-info {
+  background-color: #f9f9f9;
   border: 1px solid #e0e0e0;
 }
 
-.invoice-container h2 {
-  text-align: center;
-  color: #2c3e50;
+/* Dark theme */
+.invoice-container.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.invoice-container.dark .customer-info,
+.invoice-container.dark .payment-info {
+  background-color: #2d2d2d;
+  border: 1px solid #444444;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   border-bottom: 2px solid #3498db;
 }
 
-.invoice-container p {
-  margin: 5px 0;
-  line-height: 1.5;
+.invoice-number {
+  font-weight: bold;
+  color: #7f8c8d;
 }
 
-.invoice-container table {
+.customer-info, .payment-info {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.invoice-container h2, 
+.invoice-container h3 {
+  color: inherit;
+}
+
+.invoice-container h3 {
+  margin: 25px 0 15px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+}
+
+.invoice-container.dark h3 {
+  border-bottom-color: #444444;
+}
+
+.invoice-container.light h3 {
+  border-bottom-color: #e0e0e0;
+}
+
+table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  font-size: 14px;
 }
 
-.invoice-container th {
+th {
   background-color: #3498db;
   color: white;
-  padding: 10px;
+  padding: 12px;
   text-align: left;
-  border: 1px solid #2980b9;
 }
 
-.invoice-container td {
+td {
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid;
 }
 
-.invoice-container tr:nth-child(even) {
+.invoice-container.dark td {
+  border-color: #444444;
+}
+
+.invoice-container.light td {
+  border-color: #e0e0e0;
+}
+
+tr:nth-child(even) {
+  background-color: inherit;
+}
+
+.invoice-container.dark tr:nth-child(even) {
+  background-color: #2d2d2d;
+}
+
+.invoice-container.light tr:nth-child(even) {
   background-color: #f8f9fa;
-}
-
-.invoice-container tr:hover {
-  background-color: #f1f1f1;
 }
 
 .totales {
   margin-top: 20px;
   text-align: right;
-  padding: 15px;
-  background-color: #f8f9fa;
+  padding: 20px;
   border-top: 2px solid #3498db;
+  border-radius: 5px;
+}
+
+.invoice-container.dark .totales {
+  background-color: #2d2d2d;
+}
+
+.invoice-container.light .totales {
+  background-color: #f8f9fa;
+}
+
+.invoice-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px dashed;
+  text-align: center;
+  font-size: 14px;
+}
+
+.invoice-container.dark .invoice-footer {
+  border-top-color: #444444;
+}
+
+.invoice-container.light .invoice-footer {
+  border-top-color: #bdc3c7;
+}
+
+/* Estilos comunes para ambos temas */
+.invoice-container p {
+  margin: 8px 0;
+}
+
+.invoice-container strong {
+  color: inherit;
 }
 
 .totales p {
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: 16px;
 }
 
-.totales strong {
-  display: inline-block;
-  width: 120px;
-  text-align: left;
-}
-
-/* Estilo para resaltar el total */
 .totales p:last-child {
   font-size: 18px;
   font-weight: bold;
-  color: #2c3e50;
-  margin-top: 10px;
-}
-
-/* Estilo para los datos del cliente */
-.invoice-container p strong {
-  display: inline-block;
-  width: 100px;
-  color: #2c3e50;
-}
-
-/* Cabecera de la factura */
-.invoice-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-/* Logo de la empresa (puedes añadir uno) */
-.invoice-logo {
-  max-width: 150px;
-  height: auto;
-}
-
-/* Número de factura (puedes añadirlo al componente) */
-.invoice-number {
-  text-align: right;
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: #7f8c8d;
-}
-
-/* Pie de página de la factura */
-.invoice-footer {
-  margin-top: 40px;
-  padding-top: 10px;
-  border-top: 1px dashed #bdc3c7;
-  text-align: center;
-  font-size: 12px;
-  color: #7f8c8d;
+  margin-top: 15px;
 }

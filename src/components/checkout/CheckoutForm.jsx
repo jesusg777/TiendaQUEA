@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Invoice from "./Invoice";
 import "./CheckoutForm.css";
 
 const CheckoutForm = ({ carrito, setCarrito }) => {
@@ -21,31 +20,41 @@ const CheckoutForm = ({ carrito, setCarrito }) => {
 
     try {
       const fecha = new Date().toLocaleString();
+      const numeroFactura = `FAC-${Math.floor(Math.random() * 10000) + 1000}`;
+      const subtotal = carrito.reduce(
+        (acc, item) => acc + item.precio * item.cantidad,
+        0
+      );
+      const iva = subtotal * 0.19;
+      const total = subtotal + iva;
+
       const compra = {
         datosComprador: formData,
         productos: [...carrito],
         fecha,
-        total: carrito.reduce(
-          (acc, item) => acc + (item.precio * item.cantidad || 0),
-          0
-        ),
+        subtotal, // Añadido
+        iva, // Añadido
+        total,
+        numeroFactura,
       };
 
       const user = localStorage.getItem("currentUser");
-      if (!user) throw new Error("Usuario no autenticado");
-
       const historialKey = `compras_por_usuario_${user}`;
       const historial = JSON.parse(localStorage.getItem(historialKey)) || [];
       historial.unshift(compra);
       localStorage.setItem(historialKey, JSON.stringify(historial));
 
-      if (typeof setCarrito === "function") {
-        setCarrito([]);
-        localStorage.setItem("carrito", JSON.stringify([]));
-      }
+      setCarrito([]);
+      localStorage.setItem("carrito", JSON.stringify([]));
 
       navigate("/factura", {
-        state: { datos: formData, carrito },
+        state: {
+          datos: formData,
+          carrito,
+          numeroFactura,
+          subtotal, // Añadido
+          iva, // Añadido
+        },
       });
     } catch (error) {
       console.error("Error en el checkout:", error);
